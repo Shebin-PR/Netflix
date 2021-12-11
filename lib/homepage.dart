@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/Movies/toprated.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -8,50 +9,58 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+
+ 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
-        appBar: AppBar(),
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+        ),
         body: Container(
-          child: Text(
-            "Hello world",
-            style: TextStyle(color: Colors.white),
+          child: Column(
+            children: [
+              Text(
+                "Hello world",
+                style: TextStyle(color: Colors.white),
+              ),
+              TopRatedMovies(),
+            ],
           ),
         ),
 
 /////////////////////////Bottom Navigation///////////////////////////////////-->
 
         bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.black,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: "Home",
-              backgroundColor: Colors.black,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.games),
               label: "Games",
-              backgroundColor: Colors.black,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.view_carousel_rounded),
               label: "Coming Soon",
-              backgroundColor: Colors.black,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.emoji_emotions_outlined),
               label: "Fast Laughs",
-              backgroundColor: Colors.black,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.arrow_circle_down),
               label: "Downloads",
-              backgroundColor: Colors.black,
             ),
           ],
           currentIndex: _selectedIndex,
+          type: BottomNavigationBarType.fixed,
+          unselectedItemColor: Colors.grey[600],
           selectedItemColor: Colors.white,
           selectedLabelStyle: TextStyle(
             color: Colors.white,
@@ -63,7 +72,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   int _selectedIndex = 0;
-
   void BottomNavBar(int index) {
     setState(() {
       _selectedIndex = index;
