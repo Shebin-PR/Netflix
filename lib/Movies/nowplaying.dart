@@ -50,7 +50,7 @@ class _NowPlayingMoviesState extends State<NowPlayingMovies> {
               padding: const EdgeInsets.only(bottom: 6, top: 6, left: 6),
               child: Text(
                 "Now Playing",
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
               ),
             ),
             Expanded(
