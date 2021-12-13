@@ -33,14 +33,12 @@ class _NowPlayingMoviesState extends State<NowPlayingMovies> {
 
     nowplayingresult = convert["results"];
 
-    print(nowplayingresult);
-
     return nowplayingresult;
   }
 
   @override
   Widget build(BuildContext context) {
-        return SliverToBoxAdapter(
+    return SliverToBoxAdapter(
       child: Container(
         height: 200,
         child: Column(

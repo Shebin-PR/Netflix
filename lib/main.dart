@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/screens/home.dart';
-import 'homepage.dart';
 
 void main() {
   runApp(MyApp());

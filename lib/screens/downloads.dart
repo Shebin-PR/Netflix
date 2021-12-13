@@ -10,8 +10,8 @@ class Downloads extends StatefulWidget {
 class _DownloadsState extends State<Downloads> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("downloads"),
+    return Scaffold(
+    appBar: AppBar(backgroundColor: Colors.black,),
     );
   }
 }

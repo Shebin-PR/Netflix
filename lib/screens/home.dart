@@ -4,6 +4,7 @@ import 'package:netflix/screens/comingsoon.dart';
 import 'package:netflix/screens/downloads.dart';
 import 'package:netflix/screens/fastlaughs.dart';
 import 'package:netflix/screens/games.dart';
+import 'package:netflix/widgets/homebanner.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final _pages = [HomePage(), Games(), ComingSoon(), FastLaughs(), Downloads()];
+  final _pages = [HomePage(), Games(), ComingSoon(), HomeBanner(), Downloads()];
 
   int _selectedIndex = 0;
 

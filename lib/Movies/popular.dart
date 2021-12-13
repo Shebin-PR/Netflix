@@ -28,7 +28,7 @@ class _PopularMoviesState extends State<PopularMovies> {
     Map convert = json.decode(response.body);
 
     popularresult = convert["results"];
-    // print(popularresult);
+
     return popularresult;
   }
 
