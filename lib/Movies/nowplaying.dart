@@ -1,40 +1,46 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
+
 import 'package:http/http.dart' as http;
 
-class TopRatedMovies extends StatefulWidget {
-  const TopRatedMovies({Key? key}) : super(key: key);
+class NowPlayingMovies extends StatefulWidget {
+  const NowPlayingMovies({Key? key}) : super(key: key);
 
   @override
-  _TopRatedMoviesState createState() => _TopRatedMoviesState();
+  _NowPlayingMoviesState createState() => _NowPlayingMoviesState();
 }
 
-class _TopRatedMoviesState extends State<TopRatedMovies> {
+class _NowPlayingMoviesState extends State<NowPlayingMovies> {
   @override
-  initState() {
-    super.initState();
-    topratedmovies();
+  // ignore: must_call_super
+  void initState() {
+    // ignore: todo
+    // TODO: implement initState
+    nowplaying();
   }
 
-  List topratedresult = [];
-
+  List nowplayingresult = [];
   String img = "https://image.tmdb.org/t/p/w500/";
 
-  topratedmovies() async {
+  nowplaying() async {
     var response;
+
     response = await http.get(Uri.parse(
-        "https://api.themoviedb.org/3/movie/top_rated?api_key=129e280f3159c3b249cddb0b346d74c4"));
+        "https://api.themoviedb.org/3/movie/now_playing?api_key=129e280f3159c3b249cddb0b346d74c4"));
 
     Map convert = json.decode(response.body);
 
-    topratedresult = convert["results"];
+    nowplayingresult = convert["results"];
 
-    return topratedresult;
+    print(nowplayingresult);
+
+    return nowplayingresult;
   }
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
+        return SliverToBoxAdapter(
       child: Container(
         height: 200,
         child: Column(
@@ -43,17 +49,17 @@ class _TopRatedMoviesState extends State<TopRatedMovies> {
             Padding(
               padding: const EdgeInsets.only(bottom: 6, top: 6, left: 6),
               child: Text(
-                "Top Rated",
+                "Now Playing",
                 style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
               ),
             ),
             Expanded(
               child: FutureBuilder(
-                future: topratedmovies(),
+                future: nowplaying(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   return ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: topratedresult.length,
+                      itemCount: nowplayingresult.length,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(4.0),
@@ -62,7 +68,7 @@ class _TopRatedMoviesState extends State<TopRatedMovies> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(5),
                               child: Image.network(
-                                img + topratedresult[index]["poster_path"],
+                                img + nowplayingresult[index]["poster_path"],
                                 fit: BoxFit.fill,
                               ),
                             ),
