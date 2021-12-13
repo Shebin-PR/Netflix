@@ -27,9 +27,8 @@ class _HomePageState extends State<HomePage> {
               "assets/images/netflix.png",
               scale: 6.0,
             ),
-            expandedHeight: 150,
-            floating: false,
-            pinned: false,
+            expandedHeight: 130,
+            pinned: true,
             actions: [
               IconButton(
                 onPressed: () {},
@@ -67,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               background: Container(
-                color: Colors.red,
+                color: Colors.transparent,
               ),
             ),
           ),
