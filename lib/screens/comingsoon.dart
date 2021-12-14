@@ -1,7 +1,36 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-class ComingSoon extends StatelessWidget {
+class ComingSoon extends StatefulWidget {
   const ComingSoon({Key? key}) : super(key: key);
+
+  @override
+  State<ComingSoon> createState() => _ComingSoonState();
+}
+
+class _ComingSoonState extends State<ComingSoon> {
+  @override
+  initState() {
+    super.initState();
+    topratedmovies();
+  }
+
+  List topratedresult = [];
+
+  String img = "https://image.tmdb.org/t/p/w500/";
+
+  topratedmovies() async {
+    var response;
+    response = await http.get(Uri.parse(
+        "https://api.themoviedb.org/3/movie/upcoming?api_key=129e280f3159c3b249cddb0b346d74c4"));
+
+    Map convert = json.decode(response.body);
+
+    topratedresult = convert["results"];
+
+    return topratedresult;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -9,9 +38,11 @@ class ComingSoon extends StatelessWidget {
       backgroundColor: Colors.black,
       body: CustomScrollView(
         slivers: [
+///////////////////////---- app bar -----///////////////////////////////////////
           SliverAppBar(
             floating: false,
-            backgroundColor: Colors.deepPurple,
+            pinned: true,
+            backgroundColor: Colors.black,
             expandedHeight: 130,
             title: Text(
               "Coming soon",
@@ -60,6 +91,99 @@ class ComingSoon extends StatelessWidget {
               ),
             ),
           ),
+
+/////////////////////////--- movies --- ////////////////////////////////////////
+          SliverToBoxAdapter(
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: FutureBuilder(
+                      future: topratedmovies(),
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        return ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            itemCount: topratedresult.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Column(
+                                  children: [
+                                    
+                                    /// - -  stack -- ///
+                                    Stack(
+                                      children: [
+                                        Container(
+                                          height: 200,
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          child: Image.network(
+                                              img +
+                                                  topratedresult[index]
+                                                      ["backdrop_path"],
+                                              fit: BoxFit.fill),
+                                        ),
+                                        Positioned(
+                                          top: 12,
+                                          left: 5,
+                                          child: Image.asset(
+                                            "assets/images/netflix.png",
+                                            scale: 6.0,
+                                          ),
+                                        ),
+                                        Positioned(
+                                            top: 75,
+                                            left: 165,
+                                            child: IconButton(
+                                                onPressed: () {},
+                                                icon: Icon(
+                                                  Icons
+                                                      .play_circle_filled_sharp,
+                                                  size: 50,
+                                                  color: Colors.white54,
+                                                )))
+                                      ],
+                                    ),
+                                    
+                                    /// - - N film - - ///
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        child: Row(
+                                          children: [
+                                            Image.asset(
+                                              "assets/images/netflix.png",
+                                              scale: 18.0,
+                                            ),
+                                            Text(
+                                              " FILM",
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.bold,
+                                                  letterSpacing: 2),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  
+                                  /// - - title - - ///
+                                  Row(children: [
+                                   
+                                  ],),
+                                  ],
+                                ),
+                              );
+                            });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );

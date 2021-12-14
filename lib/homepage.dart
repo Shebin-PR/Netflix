@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:netflix/Movies/nowplaying.dart';
 import 'package:netflix/Movies/toprated.dart';
 import 'package:netflix/Movies/popular.dart';
-import 'package:netflix/widgets/homebanner.dart';
+import 'package:netflix/Movies/upcoming.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -73,8 +73,9 @@ class _HomePageState extends State<HomePage> {
           ),
 
 /////////////////////////// -- movies -- ////////////////////////////////////-->
-          HomeBanner(),
+          // HomeBanner(),
           PopularMovies(),
+          UpcomingMovies(),
           TopRatedMovies(),
           NowPlayingMovies(),
           TopRatedMovies(),
