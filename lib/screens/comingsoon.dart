@@ -248,7 +248,6 @@ class _ComingSoonState extends State<ComingSoon> {
                                         Text(
                                           topratedresult[index]
                                               ["original_title"],
-                                          overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold),

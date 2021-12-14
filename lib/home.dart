@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/homepage.dart';
+import 'package:netflix/screens/homepage.dart';
 import 'package:netflix/screens/comingsoon.dart';
 import 'package:netflix/screens/downloads.dart';
 import 'package:netflix/screens/fastlaughs.dart';
@@ -47,7 +47,7 @@ class _HomeState extends State<Home> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.view_carousel_rounded),
-            label: "Coming Soon",
+            label: "Up Coming",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.emoji_emotions_outlined),
