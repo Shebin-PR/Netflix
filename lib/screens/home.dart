@@ -14,7 +14,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final _pages = [HomePage(), Games(), ComingSoon(), HomeBanner(), Downloads()];
+  final _pages = [HomePage(), Games(), ComingSoon(), FastLaughs(), Downloads()];
 
   int _selectedIndex = 0;
 
