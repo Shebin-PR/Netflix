@@ -41,7 +41,8 @@ class _ComingSoonState extends State<ComingSoon> {
 ///////////////////////---- app bar -----///////////////////////////////////////
           SliverAppBar(
             floating: false,
-            pinned: true,
+            pinned: false,
+            snap: false,
             backgroundColor: Colors.black,
             expandedHeight: 130,
             title: Text(
@@ -76,6 +77,9 @@ class _ComingSoonState extends State<ComingSoon> {
                           Icons.notifications_none,
                           size: 15,
                         ),
+                        SizedBox(
+                          width: 3,
+                        ),
                         Text(
                           "Notifications",
                           style: TextStyle(fontSize: 12),
@@ -104,14 +108,13 @@ class _ComingSoonState extends State<ComingSoon> {
                       future: topratedmovies(),
                       builder: (BuildContext context, AsyncSnapshot snapshot) {
                         return ListView.builder(
-                            scrollDirection: Axis.vertical,
+                            // scrollDirection: Axis.vertical,
                             itemCount: topratedresult.length,
                             itemBuilder: (context, index) {
                               return Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Column(
                                   children: [
-                                    
                                     /// - -  stack -- ///
                                     Stack(
                                       children: [
@@ -146,33 +149,122 @@ class _ComingSoonState extends State<ComingSoon> {
                                                 )))
                                       ],
                                     ),
-                                    
-                                    /// - - N film - - ///
+
+                                    /// - - N film -- remind me -- info - - ///
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Container(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Image.asset(
+                                                      "assets/images/netflix.png",
+                                                      scale: 18.0,
+                                                    ),
+                                                    Text(
+                                                      " FILM",
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          letterSpacing: 2),
+                                                    )
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  height: 8,
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Text("Coming on"),
+                                                    SizedBox(
+                                                      width: 5,
+                                                    ),
+                                                    Text(topratedresult[index]
+                                                        ["release_date"])
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Icon(
+                                                    Icons
+                                                        .notifications_none_outlined,
+                                                    size: 20,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 8,
+                                                  ),
+                                                  Text(
+                                                    "Remind Me",
+                                                    style:
+                                                        TextStyle(fontSize: 12),
+                                                  )
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                width: 15,
+                                              ),
+                                              Column(
+                                                children: [
+                                                  Icon(
+                                                    Icons.info_outline,
+                                                    size: 20,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 8,
+                                                  ),
+                                                  Text(
+                                                    "Info",
+                                                    style:
+                                                        TextStyle(fontSize: 12),
+                                                  )
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                width: 15,
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
+
+                                    /// - - title - - ///
+                                    Row(
+                                      children: [
+                                        SizedBox(width: 8),
+                                        Text(
+                                          topratedresult[index]
+                                              ["original_title"],
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+
+                                    /// - - overview -- ///
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Container(
-                                        child: Row(
-                                          children: [
-                                            Image.asset(
-                                              "assets/images/netflix.png",
-                                              scale: 18.0,
-                                            ),
-                                            Text(
-                                              " FILM",
-                                              style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.bold,
-                                                  letterSpacing: 2),
-                                            )
-                                          ],
+                                        child: Text(
+                                          topratedresult[index]["overview"],
                                         ),
                                       ),
-                                    ),
-                                  
-                                  /// - - title - - ///
-                                  Row(children: [
-                                   
-                                  ],),
+                                    )
                                   ],
                                 ),
                               );
