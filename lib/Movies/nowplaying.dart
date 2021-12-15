@@ -1,7 +1,6 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-
+import 'package:bordered_text/bordered_text.dart';
 import 'package:http/http.dart' as http;
 
 class NowPlayingMovies extends StatefulWidget {
@@ -36,6 +35,8 @@ class _NowPlayingMoviesState extends State<NowPlayingMovies> {
     return nowplayingresult;
   }
 
+  int count = 0;
+
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
@@ -59,17 +60,42 @@ class _NowPlayingMoviesState extends State<NowPlayingMovies> {
                       scrollDirection: Axis.horizontal,
                       itemCount: nowplayingresult.length,
                       itemBuilder: (context, index) {
+                        var count = index + 1;
                         return Padding(
                           padding: const EdgeInsets.all(4.0),
-                          child: Container(
-                            width: 120,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(5),
-                              child: Image.network(
-                                img + nowplayingresult[index]["poster_path"],
-                                fit: BoxFit.fill,
+                          child: Stack(
+                            children: [
+                              Container(
+                                color: Colors.black,
+                                width: 160,
                               ),
-                            ),
+                              Positioned(
+                                left: 49,
+                                child: Container(
+                                  width: 120,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(5),
+                                    child: Image.network(
+                                      img +
+                                          nowplayingresult[index]
+                                              ["poster_path"],
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                  top: 30,
+                                  child: BorderedText(
+                                    strokeWidth: 4.0,
+                                    strokeColor: Colors.white54,
+                                    child: Text(
+                                      count.toString(),
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 130),
+                                    ),
+                                  ))
+                            ],
                           ),
                         );
                       });
