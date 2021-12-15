@@ -238,7 +238,7 @@ class _DownloadsState extends State<Downloads> {
                 ),
               );
             }
-            return CircularProgressIndicator();
+            return SizedBox();
           },
         ),
       ),

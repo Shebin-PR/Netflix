@@ -38,103 +38,106 @@ class _HomeBannerState extends State<HomeBanner> {
       child: FutureBuilder(
         future: bannermovies(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          return Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: Stack(
-              children: [
-                Container(
-                  height: 450,
-                  width: MediaQuery.of(context).size.width,
-                  child: Image.network(
-                    img + bannerresult[6]["poster_path"],
-                    fit: BoxFit.fill,
+          if (snapshot.hasData) {
+            return Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Stack(
+                children: [
+                  Container(
+                    height: 450,
+                    width: MediaQuery.of(context).size.width,
+                    child: Image.network(
+                      img + bannerresult[2]["poster_path"],
+                      fit: BoxFit.fill,
+                    ),
                   ),
-                ),
-                Positioned(
-                    bottom: 80,
-                    left: 50,
-                    child: Row(
-                      children: [
-                        Text(" Goofy "),
-                        Icon(
-                          Icons.circle,
-                          size: 5,
-                        ),
-                        Text(" Inspiring "),
-                        Icon(
-                          Icons.circle,
-                          size: 5,
-                        ),
-                        Text(" Fantasy "),
-                        Icon(
-                          Icons.circle,
-                          size: 5,
-                        ),
-                        Text(" Action "),
-                        Icon(
-                          Icons.circle,
-                          size: 5,
-                        ),
-                        Text(" Exciting "),
-                      ],
-                    )),
-                Positioned(
-                    bottom: 1,
-                    left: 70,
-                    child: Row(
-                      children: [
-                        Column(
-                          children: [
-                            Icon(
-                              Icons.add,
-                              size: 30,
-                            ),
-                            Text(
-                              " My List",
-                              style: TextStyle(fontSize: 10),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          width: 50,
-                        ),
-                        ElevatedButton(
-                            style:
-                                ElevatedButton.styleFrom(primary: Colors.white),
-                            onPressed: () {},
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.play_arrow,
-                                  color: Colors.black,
-                                ),
-                                Text(
-                                  "Play",
-                                  style: TextStyle(color: Colors.black),
-                                ),
-                              ],
-                            )),
-                        SizedBox(
-                          width: 50,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.info_outline,
-                              size: 30,
-                            ),
-                            Text(
-                              " Info",
-                              style: TextStyle(fontSize: 10),
-                            )
-                          ],
-                        ),
-                      ],
-                    ))
-              ],
-            ),
-          );
+                  Positioned(
+                      bottom: 80,
+                      left: 50,
+                      child: Row(
+                        children: [
+                          Text(" Goofy "),
+                          Icon(
+                            Icons.circle,
+                            size: 5,
+                          ),
+                          Text(" Inspiring "),
+                          Icon(
+                            Icons.circle,
+                            size: 5,
+                          ),
+                          Text(" Fantasy "),
+                          Icon(
+                            Icons.circle,
+                            size: 5,
+                          ),
+                          Text(" Action "),
+                          Icon(
+                            Icons.circle,
+                            size: 5,
+                          ),
+                          Text(" Exciting "),
+                        ],
+                      )),
+                  Positioned(
+                      bottom: 1,
+                      left: 70,
+                      child: Row(
+                        children: [
+                          Column(
+                            children: [
+                              Icon(
+                                Icons.add,
+                                size: 30,
+                              ),
+                              Text(
+                                " My List",
+                                style: TextStyle(fontSize: 10),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            width: 50,
+                          ),
+                          ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  primary: Colors.white),
+                              onPressed: () {},
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.play_arrow,
+                                    color: Colors.black,
+                                  ),
+                                  Text(
+                                    "Play",
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                ],
+                              )),
+                          SizedBox(
+                            width: 50,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.info_outline,
+                                size: 30,
+                              ),
+                              Text(
+                                " Info",
+                                style: TextStyle(fontSize: 10),
+                              )
+                            ],
+                          ),
+                        ],
+                      ))
+                ],
+              ),
+            );
+          }
+          return SizedBox();
         },
       ),
     );

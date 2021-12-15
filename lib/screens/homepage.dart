@@ -74,11 +74,15 @@ class _HomePageState extends State<HomePage> {
           ),
 
 /////////////////////////// -- movies -- ////////////////////////////////////-->
-          // HomeBanner(),
+          HomeBanner(),
 
-          UpcomingMovies(), NowPlayingMovies(),
+          UpcomingMovies(),
 
-          TopRatedMovies(), PopularMovies(),
+          NowPlayingMovies(),
+
+          TopRatedMovies(),
+
+          PopularMovies(),
         ],
       ),
 
