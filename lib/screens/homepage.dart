@@ -3,6 +3,7 @@ import 'package:netflix/Movies/nowplaying.dart';
 import 'package:netflix/Movies/toprated.dart';
 import 'package:netflix/Movies/popular.dart';
 import 'package:netflix/Movies/upcoming.dart';
+import 'package:netflix/widgets/homebanner.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
