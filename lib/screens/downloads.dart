@@ -238,7 +238,11 @@ class _DownloadsState extends State<Downloads> {
                 ),
               );
             }
-            return SizedBox();
+            return Center(
+                child: Text("LOADING . . . !",
+                    style: TextStyle(
+                      color: Colors.grey,
+                    )));
           },
         ),
       ),
@@ -260,8 +264,8 @@ class _DownloadsState extends State<Downloads> {
                 width: 150,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(6),
-                  child: Image.network(img + dload[index]["poster_path"],
-                      fit: BoxFit.fill),
+                  child: Image.network(img + dload[index]["backdrop_path"],
+                      fit: BoxFit.cover),
                 ),
               ),
               Container(

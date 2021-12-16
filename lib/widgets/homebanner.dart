@@ -47,7 +47,7 @@ class _HomeBannerState extends State<HomeBanner> {
                     height: 450,
                     width: MediaQuery.of(context).size.width,
                     child: Image.network(
-                      img + bannerresult[2]["poster_path"],
+                      img + bannerresult[3]["poster_path"],
                       fit: BoxFit.fill,
                     ),
                   ),
