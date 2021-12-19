@@ -108,6 +108,7 @@ class _ComingSoonState extends State<ComingSoon> {
                       future: topratedmovies(),
                       builder: (BuildContext context, AsyncSnapshot snapshot) {
                         return ListView.builder(
+                          shrinkWrap: true,
                             // scrollDirection: Axis.vertical,
                             itemCount: topratedresult.length,
                             itemBuilder: (context, index) {
@@ -115,7 +116,7 @@ class _ComingSoonState extends State<ComingSoon> {
                                 padding: const EdgeInsets.all(5.0),
                                 child: Column(
                                   children: [
-                                    /// - -  stack -- ///
+                                    /// - -  stack - - ///
                                     Stack(
                                       children: [
                                         Container(
@@ -146,7 +147,9 @@ class _ComingSoonState extends State<ComingSoon> {
                                                       .play_circle_filled_sharp,
                                                   size: 50,
                                                   color: Colors.white54,
-                                                )))
+                                                ))),
+                                                // Positioned(child: GestureDetector()
+                                                // )
                                       ],
                                     ),
 
